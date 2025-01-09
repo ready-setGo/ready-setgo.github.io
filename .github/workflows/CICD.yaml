@@ -38,7 +38,7 @@ jobs:
       env:
         JEKYLL_ENV: production
     - name: "Deploy to AWS S3"
-      run: aws s3 sync ./_site/ s3://${{ AWS_S3_BUCKET_NAME }} --delete
+      run: aws s3 sync ./_site/ s3://maw-fastly --delete
     - name: "Purge Fastly cache"
       run: |
         curl -X POST -H "Fastly-Key: ${{ secrets.FASTLY_KEY }}" "https://api.fastly.com/service/${{ secrets.FASTLY_SERVICE }}/purge_all"
