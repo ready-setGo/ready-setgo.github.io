@@ -2,7 +2,7 @@ name: CI / CD
 
 # Controls when the action will run. 
 on:
-  # Triggers the workflow on push for the fastly-cdn branch
+  push:
     branches:
       - main
       - master
