@@ -12,13 +12,6 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-env:
-  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  AWS_DEFAULT_REGION: 'us-east-2'
-  FASTLY_KEY: ${{ secrets.FASTLY_KEY }}
-  FASTLY_SERVICE: ${{ secrets.FASTLY_SERVICE }}
-
 permissions:
   contents: read
   pages: write
@@ -67,12 +60,6 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: "_site${{ steps.pages.outputs.base_path }}"
-
-      - name: "Deploy to AWS S3"
-        run: aws s3 sync ./_site/ s3://${{ secrets.AWS_S3_BUCKET_NAME }} --delete
-      - name: "Purge Fastly cache"
-        run: |
-          curl -X POST -H "Fastly-Key: ${{ secrets.FASTLY_KEY }}" "https://api.fastly.com/service/${{ secrets.FASTLY_SERVICE }}/purge_all"
 
   deploy:
     environment:
