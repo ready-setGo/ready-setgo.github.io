@@ -16,7 +16,7 @@ env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   AWS_DEFAULT_REGION: 'us-east-2'
-  AWS_S3_BUCKET_NAME: ${{ secrets.AWS_S3_BUCKET_NAME }}
+  AWS_S3_BUCKET_NAME: 'arn:aws:s3:::maw-fastly'
   FASTLY_KEY: ${{ secrets.FASTLY_KEY }}
   FASTLY_SERVICE: ${{ secrets.FASTLY_SERVICE }}
 
